@@ -8,6 +8,8 @@ class Plausible
 {
     protected string $domain;
 
+    protected string $trackingUrl;
+
     protected array $tracking;
 
     protected array $simpleProperties = [];
@@ -18,6 +20,7 @@ class Plausible
     {
         $this->domain = config('plausible.domain');
         $this->tracking = config('plausible.tracking');
+        $this->trackingUrl = $this->trackingUrl();
     }
 
     public function trackingUrl(): string

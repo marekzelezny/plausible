@@ -10,9 +10,11 @@
     }
 
     @if(plausible()->tracks('pageview_properties'))
-        plausible('pageview', {
-            props: @json(plausible()->properties('simple'))
-        });
+        @if(plausible()->properties('simple'))
+            plausible('pageview', {
+                props: @json(plausible()->properties('simple'))
+            });
+        @endif
 
         @foreach(plausible()->properties('array') as $property)
             plausible('pageview', {
